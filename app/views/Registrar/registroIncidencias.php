@@ -29,54 +29,10 @@
 
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-<div class="flex shadow-lg p-8 rounded-lg w-full sm:h-screen">
-  <!-- Sidebar -->
-  <aside class="bg-white text-gray-800 w-60 flex flex-col shadow-md overflow-y-auto">
-    <!-- Logo o Imagen (escudo) -->
-    <div class="flex items-center justify-center h-20 ">
-      <img src="/public/assets/image.png" alt="Escudo" class="h-28 w-28 absolute top-16 left-24">
-    </div>
-
-    <!-- Etiquetas con submenús -->
-    <nav class="flex-1 mt-20">
-      <!-- Etiqueta con submenú: Registrar -->
-      <div x-data="{ open: false }">
-        <button @click="open = !open" class="block py-2 px-4 hover:bg-[#d5fab4]  flex justify-between w-full">
-          Registrar
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path x-show="!open" fill-rule="evenodd" clip-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 1.414L4 12l2.707 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" />
-            <path x-show="open" fill-rule="evenodd" clip-rule="evenodd"
-                  d="M14.707 12.707a1 1 0 01-1.414-1.414L16 8l-2.707-2.293a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4z" />
-          </svg>
-        </button>
-        <div x-show="open" class="pl-4">
-          <a href="registroIncidencias.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Incidencia</a>
-          <a href="registroRecepcion.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Recepción</a>
-          <a href="registroCierre.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Cierre</a>
-        </div>
-      </div>
-
-      <!-- Etiqueta: Consultar -->
-      <a href="/app/views/consultar.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Consultar</a>
-
-      <!-- Etiqueta: Mantenimiento -->
-      <a href="/app/views/mantenimiento.html" class="block py-2 px-4 hover:bg-[#d5fab4] 0">Mantenimiento</a>
-    </nav>
-
-    <!-- Botón Cerrar Sesión -->
-    <div class="py-4 px-4 border-t border-gray-300">
-      <button class="w-full text-white bg-[#87cd51] hover:bg-[#b1f774] font-bold py-2 px-4 rounded ">
-        Cerrar Sesión
-      </button>
-    </div>
-  </aside>
   <!-- Contenido principal -->
   <main class="bg-[#eeeff1] flex-1 p-4 overflow-y-auto">
     <!-- Header -->
     <h1 class="text-2xl font-bold mb-4 ">Registro de Incidencia</h1>
-
-    <!-- Formulario -->
     <!-- Formulario -->
     <form action="#" method="POST" class="space-y-2 text-gray-80">
       <!-- Campo para mostrar el número de incidencia -->
@@ -167,8 +123,6 @@
 
     </form>
   </main>
-</div>
-
 </body>
 
 </html>

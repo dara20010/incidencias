@@ -30,7 +30,6 @@
 
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-  <div class="flex shadow-lg p-8 rounded-lg w-full sm:h-screen">
     <!-- Sidebar -->
     <aside class="bg-white text-gray-800 w-60 flex flex-col shadow-md overflow-y-auto">
       <!-- Logo o Imagen (escudo) -->
@@ -52,8 +51,8 @@
             </svg>
           </button>
           <div x-show="open" class="pl-4">
-            <a href="/app/views/Registrar/registroIncidencias.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Incidencia</a>
-            <a href="/app/views/Registrar/registroRecepcion.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Recepción</a>
+            <a href="/app/views/Registrar/registroIncidencias.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Incidencia</a>
+            <a href="/app/views/Registrar/registroRecepcion.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Recepción</a>
             <a href="/app//views/Registrar/registroCierre.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Cierre</a>
           </div>
         </div>
@@ -73,7 +72,6 @@
       </div>
     </aside>
    
-  </div>
 
 
 </body>

@@ -61,9 +61,9 @@ class UsuarioModel
         $rol = $this->obtenerRol($username);
         if($rol ==='Administrador'){
             //Redirige al panel de administrador
-            header('Location: admin.php');
+            header('Location: registro-incidencia.php');
         }elseif ($rol === 'Trabajador'){
-            header('Location:adminController.php.php');
+            header('Location:registro-incidencia.php');
         }else{
             //No se redirige
         }
