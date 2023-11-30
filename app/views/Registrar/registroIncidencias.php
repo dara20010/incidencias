@@ -42,9 +42,6 @@
                class="w-20 border border-gray-200 bg-gray-100 rounded-md p-2 text-sm" readonly>
         <!-- El atributo 'readonly' evita que el usuario edite este campo -->
       </div>
-
-
-
       <!-- Primera fila: Categoria, Prioridad, Fecha -->
       <div class="flex flex-wrap -mx-2">
         <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">

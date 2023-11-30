@@ -67,8 +67,9 @@
       <!-- Botón Cerrar Sesión -->
       <div class="py-4 px-4 border-t border-gray-300">
         <button class="w-full text-white bg-[#87cd51] hover:bg-[#b1f774] font-bold py-2 px-4 rounded ">
-           <a href="logout.php">
-          Cerrar Sesión
+            <a href="logout.php">
+                Cerrar Sesión
+            </a>
         </button>
       </div>
     </aside>
