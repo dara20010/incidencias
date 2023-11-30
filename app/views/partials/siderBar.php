@@ -51,9 +51,9 @@
             </svg>
           </button>
           <div x-show="open" class="pl-4">
-            <a href="/app/views/Registrar/registroIncidencias.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Incidencia</a>
-            <a href="/app/views/Registrar/registroRecepcion.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Recepción</a>
-            <a href="/app//views/Registrar/registroCierre.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Cierre</a>
+            <a href="registro-Incidencia.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Incidencia</a>
+            <a href="registro-Recepcion.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Recepción</a>
+            <a href="registro-Cierre.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Cierre</a>
           </div>
         </div>
 
