@@ -10,6 +10,8 @@
   <link rel="icon" href="public/assets/logo.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Importación de estilos -->
+  <link rel="stylesheet" href="./public/styles/appMenu.css">
   <title>Sistema de Incidencias</title>
 </head>
 
@@ -24,7 +26,7 @@
     ?>
     <?php
     // Incluir la barra lateral desde un archivo externo
-    include("app/views/Registrar/registroIncidencias.php");
+    include("app/views/Registrar/registroCierre.php");
     ?>
 </div>
 </body>

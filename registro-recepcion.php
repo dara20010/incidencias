@@ -12,7 +12,7 @@
 
   <!-- Importación de estilos -->
   <link rel="stylesheet" href="./public/styles/appMenu.css">
-  <title>Consulta Transportes</title>
+  <title>Sistema de Incidencias</title>
 </head>
 
 

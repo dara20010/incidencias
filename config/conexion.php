@@ -23,7 +23,7 @@ $con = new Conexion();
 
 // Intenta obtener una conexión a la base de datos y muestra un mensaje en consecuencia
 if ($con->getConexion() != null) {
-    echo "Conexión exitosa";
+    // echo "Conexión exitosa";
 
 } else {
     echo "Error al conectarse a la base de datos";

@@ -24,7 +24,7 @@
     ?>
     <?php
     // Incluir la barra lateral desde un archivo externo
-    include("app/views/Registrar/registroIncidencias.php");
+    include("app/views/mantenimientoView.php");
     ?>
 </div>
 </body>

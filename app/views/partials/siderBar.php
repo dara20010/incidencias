@@ -51,9 +51,9 @@
             </svg>
           </button>
           <div x-show="open" class="pl-4">
-            <a href="registro-Incidencia.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Incidencia</a>
-            <a href="registro-Recepcion.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Recepción</a>
-            <a href="registro-Cierre.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Cierre</a>
+            <a href="registro-incidencia.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Incidencia</a>
+            <a href="registro-recepcion.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Recepción</a>
+            <a href="registro-cierre.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Cierre</a>
           </div>
         </div>
 
@@ -61,7 +61,7 @@
         <a href="/app/views/consultar.html" class="block py-2 px-4 hover:bg-[#d5fab4] ">Consultar</a>
 
         <!-- Etiqueta: Mantenimiento -->
-        <a href="/app/views/mantenimiento.html" class="block py-2 px-4 hover:bg-[#d5fab4] 0">Mantenimiento</a>
+        <a href="mantenimiento.php" class="block py-2 px-4 hover:bg-[#d5fab4] 0">Mantenimiento</a>
       </nav>
 
       <!-- Botón Cerrar Sesión -->
