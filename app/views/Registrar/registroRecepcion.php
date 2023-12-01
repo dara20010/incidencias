@@ -93,10 +93,9 @@
 
         <!-- Formulario -->
         <div class="mb-8 mt-8">
-            <h2 class="text-lg font-bold mb-2">Formulario</h2>
             <form action="ruta_para_procesar_formulario.php" method="POST">
-                <div class="flex flex-wrap -mx-2 mb-4">
-                    <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="flex flex-wrap -mx-2 mb-2">
+                    <div class="w-full md:w-1/3 px-2 mb-2">
                         <label for="num_recepcion" class="block font-bold mb-1">Num Recepcion:</label>
                         <input type="text" id="num_recepcion" name="num_recepcion" class="border p-2 w-full text-sm">
                     </div>

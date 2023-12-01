@@ -10,7 +10,7 @@
   <link rel="icon" href="public/assets/logo.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
 
-  <title>Sistema de Incidencias</title>
+  <title>Sistema de Incidencias - Mantenimiento</title>
 </head>
 
 

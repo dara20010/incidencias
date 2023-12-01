@@ -12,7 +12,7 @@
 
   <!-- Importación de estilos -->
   <link rel="stylesheet" href="./public/styles/appMenu.css">
-  <title>Sistema de Incidencias</title>
+  <title>Sistema de Incidencias - Registro de Cierre</title>
 </head>
 
 
