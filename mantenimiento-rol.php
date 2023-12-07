@@ -4,13 +4,13 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="public/assets/logo.ico" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="public/assets/logo.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Sistema de Incidencias</title>
+  <title>Sistema de Incidencias - Mantenimiento Rol</title>
 </head>
 
 
@@ -24,7 +24,7 @@
     ?>
     <?php
     // Incluir la barra lateral desde un archivo externo
-    include("app/views/mantenimientoView.php");
+    include("app/views/Mantenimiento/mantenimientoRol.php");
     ?>
 </div>
 </body>

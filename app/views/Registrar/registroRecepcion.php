@@ -58,7 +58,7 @@
                             Fecha Incidencia
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            <span class=""></span>
+                            Asunto
                         </th>
                     </tr>
                     </thead>
@@ -80,7 +80,47 @@
                             30-11-2023
                         </td>
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                            .....
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            1
+                        </th>
+                        <td class="px-6 py-4">
+                            COD123
+                        </td>
+                        <td class="px-6 py-4">
+                            Asistencia Técnica
+                        </td>
+                        <td class="px-6 py-4">
+                            Alta
+                        </td>
+                        <td class="px-6 py-4">
+                            30-11-2023
+                        </td>
+                        <td class="px-6 py-4">
+                            .....
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            1
+                        </th>
+                        <td class="px-6 py-4">
+                            COD123
+                        </td>
+                        <td class="px-6 py-4">
+                            Asistencia Técnica
+                        </td>
+                        <td class="px-6 py-4">
+                            Alta
+                        </td>
+                        <td class="px-6 py-4">
+                            30-11-2023
+                        </td>
+                        <td class="px-6 py-4">
+                            .....
                         </td>
                     </tr>
 

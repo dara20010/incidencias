@@ -51,13 +51,10 @@
             <!-- Opciones de selección -->
           </select>
         </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">
-          <label for="prioridad" class="block mb-1 font-bold text-sm">Prioridad:</label>
-          <select id="prioridad" name="prioridad"
-                  class="w-full border-gray-300 rounded-md p-2 text-sm">
-            <!-- Opciones de selección -->
-          </select>
-        </div>
+          <div class="w-full md:w-1/3 px-2 mb-2">
+              <label for="hora" class="block font-bold mb-1">Hora:</label>
+              <input type="time" id="hora" name="hora" class="border p-2 w-full text-sm">
+          </div>
         <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">
           <label for="fecha" class="block mb-1 font-bold text-sm">Fecha:</label>
           <input type="date" id="fecha" name="fecha"
@@ -114,7 +111,7 @@
         </button>
         <button type="button"
                 class="bg-blue-500 text-white hover:bg-[#6cb2eb] font-bold py-2 px-4 rounded text-sm">
-          Descargar Reporte
+          Imprimir reporte
         </button>
       </div>
 

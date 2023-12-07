@@ -31,7 +31,7 @@
     <!-- Contenido principal -->
     <main class="bg-[#eeeff1] flex-1 p-4 overflow-y-auto">
         <!-- Header -->
-        <h1 class="text-2xl font-bold mb-4 ">Mantenimiento</h1>
+        <h1 class="text-2xl font-bold mb-4 ">Mantenimiento de Usuario</h1>
     </main>
 
 </body>

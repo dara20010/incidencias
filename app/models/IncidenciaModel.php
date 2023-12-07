@@ -17,7 +17,7 @@ class IncidenciaModel
 
         if ($conn != null) {
             // Preparar la consulta SQL para la inserción sin incluir el campo id
-            $sql = "INSERT INTO Incidencias (categoria, prioridad, area, fecha, codigo_patrimonial, asunto, numero_documento, documento, descripcion) 
+            $sql = "INSERT INTO Incidencia (categoria, prioridad, area, fecha, codigo_patrimonial, asunto, numero_documento, documento, descripcion) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             // Preparar la sentencia
