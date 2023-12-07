@@ -34,7 +34,7 @@
   <aside class="bg-white text-gray-800 w-60 flex flex-col shadow-md overflow-y-auto">
     <!-- Logo o Imagen (escudo) -->
     <div class="flex items-center justify-center h-20 ">
-      <img src="/public/assets/image.png" alt="Escudo" class="h-28 w-28 absolute top-16 left-24">
+      <img src="public/assets/image.png" alt="Escudo" class="h-28 w-28 absolute top-16 left-24">
     </div>
 
     <!-- Etiquetas con submenús -->
