@@ -93,3 +93,5 @@ SP Result: Array
 POST: {"numero_incidencia":"1","categoria":"2","hora":"","fecha":"","area":"4","codigo_patrimonial":"","asunto":"","numero_documento":"","documento":"","descripcion":""}
 Username: admin, Password: 123456
 SP Result: Array
+Username: admin, Password: 123456
+SP Result: Array

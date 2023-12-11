@@ -39,7 +39,7 @@
         <div class="flex items-center mb-4">
             <label for="numero_incidencia" class="w-28 font-bold text-sm">Nro Incidencia:</label>
             <input type="text" id="numero_incidencia" name="numero_incidencia"
-                   class="w-20 border border-gray-200 bg-gray-100 rounded-md p-2 text-sm" readonly>
+                   class="w-20 border border-gray-200 bg-gray-100 rounded-md p-2 text-sm" readonly disabled>
             <!-- El atributo 'readonly' evita que el usuario edite este campo -->
         </div>
         <!-- Primera fila: Categoria, Prioridad, Fecha -->
@@ -48,19 +48,31 @@
                 <label for="categoria" class="block mb-1 font-bold text-sm">Categoría:</label>
                 <select id="categoria" name="categoria"
                         class="w-full border-gray-300 rounded-md p-2 text-sm">
-                    <!-- Opciones de selección -->
                 </select>
             </div>
             <div class="w-full md:w-1/3 px-2 mb-2">
                 <label for="hora" class="block font-bold mb-1">Hora:</label>
-                <input type="time" id="hora" name="hora" class="border p-2 w-full text-sm">
+                <input type="time" id="hora" name="hora" class="border p-2 w-full text-sm" readonly disabled>
+
             </div>
             <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">
                 <label for="fecha" class="block mb-1 font-bold text-sm">Fecha:</label>
                 <input type="date" id="fecha" name="fecha"
-                       class="w-full border-gray-300 rounded-md p-2 text-sm">
+                       class="w-full border-gray-300 rounded-md p-2 text-sm" readonly disabled >
             </div>
         </div>
+        <?php
+        // Obtener la fecha actual
+        date_default_timezone_set('America/Lima');
+        $fecha_actual = date('Y-m-d');
+
+        // Obtener la hora actual
+        $hora_actual = date('H:i');
+        ?>
+        <script>
+            document.getElementById('fecha').value = '<?php echo $fecha_actual; ?>';
+            document.getElementById('hora').value = '<?php echo $hora_actual; ?>';
+        </script>
 
         <!-- Segunda fila: Área, Código Patrimonial -->
         <div class="flex flex-wrap -mx-2">
@@ -109,10 +121,7 @@
                     class="bg-green-500 text-white hover:bg-[#b1f774] font-bold py-2 px-4 rounded bg-[#87cd51] text-sm">
                 Registrar
             </button>
-            <button type="button"
-                    class="bg-blue-500 text-white hover:bg-[#6cb2eb] font-bold py-2 px-4 rounded text-sm">
-                Imprimir reporte
-            </button>
+            
         </div>
 
     </form>
