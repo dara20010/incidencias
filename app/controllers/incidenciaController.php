@@ -2,19 +2,21 @@
 // Importar el modelo IncidenciaModel.php
 require 'app/models/IncidenciaModel.php';
 
-class IncidenciaController {
+class IncidenciaController
+{
     private $incidenciaModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         // Crear una instancia del modelo IncidenciaModel
         $this->incidenciaModel = new IncidenciaModel();
     }
 
-    public function registrarIncidencia() {
+    public function registrarIncidencia()
+    {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Obtener los datos del formulario
             $categoria = $_POST['categoria'];
-            $prioridad = $_POST['prioridad'];
             $area = $_POST['area'];
             $fecha = $_POST['fecha'];
             $codigo_patrimonial = $_POST['codigo_patrimonial'];
@@ -24,7 +26,15 @@ class IncidenciaController {
             $descripcion = $_POST['descripcion'];
 
             // Llamar al método del modelo para insertar la incidencia en la base de datos
-            $this->incidenciaModel->insertarIncidencia($categoria, $prioridad, $area, $fecha, $codigo_patrimonial, $asunto, $numero_documento, $documento, $descripcion);
+            $insertSuccess = $this->incidenciaModel->insertarIncidencia($fecha, $asunto, $codigo_patrimonial, $documento, 1, $numero_documento, $descripcion, $categoria, 2, $area, 1);
+
+            if ($insertSuccess) {
+                // Redirigir a la página de consulta de incidencias.bak
+                header('Location: registro-incidencia.php');
+            } else {
+                // Mostrar un mensaje de error
+                echo "Error al registrar la incidencia.";
+            }
         } else {
             // Manejar el caso en el que no se recibe un POST (puede ser una redirección o una respuesta de error)
             echo "Error: Método no permitido.";
@@ -32,7 +42,4 @@ class IncidenciaController {
     }
 }
 
-// Crear una instancia del controlador y ejecutar el registro de la incidencia
-$incidenciaController = new IncidenciaController();
-$incidenciaController->registrarIncidencia();
 ?>
