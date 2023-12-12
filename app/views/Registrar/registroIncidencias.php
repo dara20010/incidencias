@@ -35,14 +35,14 @@
     <h1 class="text-2xl font-bold mb-4 ">Registro de Incidencia</h1>
     <!-- Formulario -->
     <form action="registro-incidencia.php?action=registrar" method="POST" class="space-y-2 text-gray-80">
-        <!-- Campo para mostrar el número de incidencia -->
+        <!-- PRIMERA FILA Campo para mostrar el número de incidencia -->
         <div class="flex items-center mb-4">
             <label for="numero_incidencia" class="w-28 font-bold text-sm">Nro Incidencia:</label>
             <input type="text" id="numero_incidencia" name="numero_incidencia"
                    class="w-20 border border-gray-200 bg-gray-100 rounded-md p-2 text-sm" readonly disabled>
             <!-- El atributo 'readonly' evita que el usuario edite este campo -->
         </div>
-        <!-- Primera fila: Categoria, Prioridad, Fecha -->
+        <!-- SEGUNDA fila: Categoria, Prioridad, Fecha -->
         <div class="flex flex-wrap -mx-2">
             <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">
                 <label for="categoria" class="block mb-1 font-bold text-sm">Categoría:</label>
@@ -52,13 +52,14 @@
             </div>
             <div class="w-full md:w-1/3 px-2 mb-2">
                 <label for="hora" class="block font-bold mb-1">Hora:</label>
-                <input type="time" id="hora" name="hora" class="border p-2 w-full text-sm" readonly disabled>
+                <input type="time" id="hora" name="hora" class="w-full border-gray-300 rounded-md p-2 text-sm" readonly
+                       disabled>
 
             </div>
             <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">
                 <label for="fecha" class="block mb-1 font-bold text-sm">Fecha:</label>
                 <input type="date" id="fecha" name="fecha"
-                       class="w-full border-gray-300 rounded-md p-2 text-sm" readonly disabled >
+                       class="w-full border-gray-300 rounded-md p-2 text-sm" readonly disabled>
             </div>
         </div>
         <?php
@@ -74,7 +75,7 @@
             document.getElementById('hora').value = '<?php echo $hora_actual; ?>';
         </script>
 
-        <!-- Segunda fila: Área, Código Patrimonial -->
+        <!-- TERCERA fila: Área, Código Patrimonial -->
         <div class="flex flex-wrap -mx-2">
             <div class="w-full sm:w-1/2 px-2 mb-2">
                 <label for="area" class="block mb-1 font-bold text-sm">Área:</label>
@@ -89,26 +90,27 @@
             </div>
         </div>
 
-        <!-- Tercera fila: Asunto -->
+        <!-- CUARTA fila: Asunto -->
         <div class="w-full mb-2">
             <label for="asunto" class="block mb-1 font-bold text-sm">Asunto:</label>
             <input type="text" id="asunto" name="asunto"
                    class="w-full border-gray-300 rounded-md p-2 text-sm">
         </div>
-        <!-- Número de Documento -->
-        <div class="w-full mb-2">
-            <label for="numero_documento" class="block mb-1 font-bold text-sm">Número de Documento:</label>
-            <input type="text" id="numero_documento" name="numero_documento"
-                   class="w-full border-gray-300 rounded-md p-2 text-sm">
-        </div>
-        <!-- Cuarta fila: Documento -->
-        <div class="w-full mb-2">
-            <label for="documento" class="block mb-1 font-bold text-sm">Documento:</label>
-            <input type="file" id="documento" name="documento"
-                   class="w-full border-gray-300 rounded-md p-2 text-sm">
+        <!-- QUINTA FILA: Número de Documento Y ARCHIVO DE DOCUMENTO -->
+        <div class="flex flex-wrap -mx-2">
+            <div class="w-full sm:w-1/2 px-2 mb-2">
+                <label for="numero_documento" class="block mb-1 font-bold text-sm">Número de Documento:</label>
+                <input type="text" id="numero_documento" name="numero_documento"
+                       class="w-full border-gray-300 rounded-md p-2 text-sm">
+            </div>
+            <div class="w-full sm:w-1/2 px-2 mb-2">
+                <label for="documento" class="block mb-1 font-bold text-sm">Documento:</label>
+                <input type="file" id="documento" name="documento"
+                       class="w-full border-gray-300 rounded-md p-2 text-sm">
+            </div>
         </div>
 
-        <!-- Quinta fila: Descripción -->
+        <!-- SEXTA fila: Descripción -->
         <div class="w-full mb-2">
             <label for="descripcion" class="block mb-1 font-bold text-sm">Descripción:</label>
             <textarea id="descripcion" name="descripcion" rows="4"
@@ -121,7 +123,7 @@
                     class="bg-green-500 text-white hover:bg-[#b1f774] font-bold py-2 px-4 rounded bg-[#87cd51] text-sm">
                 Registrar
             </button>
-            
+
         </div>
 
     </form>
