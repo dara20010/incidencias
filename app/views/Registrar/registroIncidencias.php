@@ -175,6 +175,7 @@
             type: 'GET',
             dataType: 'json',
             success: function (data) {
+                console.log(data);
                 var select = $('#numero_incidencia');
                 select.empty();
                 select.val(data.INC_codigo);

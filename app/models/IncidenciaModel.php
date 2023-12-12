@@ -1,6 +1,6 @@
 <?php
 // Importamos las credenciales y la clase de conexión
-require 'config/conexion.php';
+require_once 'config/conexion.php';
 
 class IncidenciaModel
 {
@@ -50,13 +50,44 @@ class IncidenciaModel
             return false;
         }
     }
-    public function generarReporteIncidencias(){
+
+    //write a function that gets an incidencia with his id and updates his INC_estado to 4
+    public function recepcionarIncidencia($INC_codigo) {
+        $conn = $this->conexion->getConexion();
+
+        if ($conn != null) {
+            // Preparar la consulta SQL para la inserción sin incluir el campo id
+            $sql = "UPDATE Incidencia SET INC_estado = 4 WHERE INC_codigo = ?";
+
+            // Preparar la sentencia
+            $stmt = $conn->prepare($sql);
+
+            // Ejecutar la inserción sin proporcionar el valor para el campo id
+            $success = $stmt->execute(
+                [
+                    $INC_codigo
+                ]
+            );
+
+            if ($success) {
+                echo "Error al actualizar la incidencia.";
+                return $success;
+            } else {
+                return false;
+            }
+        } else {
+            echo "Error de conexión a la base de datos.";
+            return false;
+        }
+    }
+
+    public function obtenerIncidenciasSinRecepcionar() {
         $conn = $this->conexion->getConexion();
 
         if ($conn != null) {
             try {
                 // Preparar la consulta SQL para obtener los registros de incidencias
-                $sql = "SELECT * FROM Incidencia";
+                $sql = "SELECT * FROM Incidencia WHERE INC_estado != 4";
 
                 // Preparar la sentencia
                 $stmt = $conn->prepare($sql);
@@ -81,5 +112,4 @@ class IncidenciaModel
     }
 
 }
-
 ?>
