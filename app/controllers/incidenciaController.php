@@ -26,11 +26,8 @@ class IncidenciaController
             $documento = $_POST['documento'];
             $descripcion = $_POST['descripcion'];
 
-            // Combinar la fecha y la hora en un formato DateTime
-            $fechaHora = $fecha . ' ' . $hora;
-
             // Llamar al método del modelo para insertar la incidencia en la base de datos
-            $insertSuccess = $this->incidenciaModel->insertarIncidencia($fechaHora, $asunto, $codigo_patrimonial, $documento, 1, $numero_documento, $descripcion, $categoria, 2, $area, 1);
+            $insertSuccess = $this->incidenciaModel->insertarIncidencia($fecha, $asunto, $codigo_patrimonial, $documento, 1, $numero_documento, $descripcion, $categoria, 2, $area, 1,$hora);
 
             if ($insertSuccess) {
                     // Redirigir a la página de consulta de incidencias.bak

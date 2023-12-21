@@ -30,11 +30,47 @@ class UsuarioModel
         $logData = "SP Result: " . $resultado;
         file_put_contents('logs/log.txt', $logData . PHP_EOL, FILE_APPEND);
         if ($resultado) {
-            // Inicio de sesión exitoso, almacena el nombre de la persona en la sesión
-            $_SESSION['nombreDePersona'] = $resultado['PER_nombre'];
+            // Inicio de sesión exitoso, almacenamos la informacion del usuario
+            session_start();
+
+
+            $_SESSION['nombreDePersona'] = $resultado['PER_nombres'];
+            $informacionUsuario = $this->obtenerInformacionUsuario($username, $password);
+            $codigo = $informacionUsuario['codigo'];
+            $usuario = $informacionUsuario['usuario'];
+            $_SESSION['codigoUsuario'] = $codigo;
+            $_SESSION['usuario'] = $usuario;
+
+            $logStart = "------- START LOGIN LOGS ---------";
+            file_put_contents('logs/log.txt', $logStart . PHP_EOL, FILE_APPEND);
+            $sessionLogData = "Session Contents: " . print_r($_SESSION, true);
+            file_put_contents('logs/log.txt', $sessionLogData . PHP_EOL, FILE_APPEND);
+            $userLogData = "Código de Usuario: " . $codigo . ", Nombre de Persona: " . $resultado['PER_nombre'];
+            file_put_contents('logs/log.txt', $userLogData . PHP_EOL, FILE_APPEND);
+
             return true;
         }
         return false;
+
+    }
+
+    private function obtenerInformacionUsuario($username, $password)
+    {
+        $consulta = "SELECT USU_codigo as codigo, USU_usuario as usuario FROM USUARIO u WHERE USU_usuario = :username AND USU_password = :password";
+        $stmt = $this->db->prepare($consulta);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+
+        $fila = $stmt->fetch();
+
+        if ($fila) {
+            $logData = "INFORMACION USUARIO Result: " . $fila;
+            file_put_contents('logs/log.txt', $logData . PHP_EOL, FILE_APPEND);
+            return $fila;
+        } else {
+            return null;
+        }
 
     }
 

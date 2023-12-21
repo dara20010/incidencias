@@ -31,7 +31,7 @@ class RecepcionModel
                     $PRI_codigo,
                     $REC_hora,
                     $REC_fecha,
-                    $INC_codigo
+                    $INC_codigo,
                 ]
             );
 

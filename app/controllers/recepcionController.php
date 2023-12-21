@@ -24,6 +24,7 @@ class RecepcionController
             $REC_fecha = $_POST['fecha_recepcion'];
             $INC_codigo = $_POST['INC_codigo'];
 
+
             // Llamar al método del modelo para insertar la recepcion en la base de datos
             $insertSuccess = $this->recepcionModel->insertarRecepcion($USU_codigo, $IMP_codigo, $PRI_codigo, $REC_hora, $REC_fecha, $INC_codigo);
 

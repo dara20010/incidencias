@@ -105,8 +105,10 @@
             <input type="hidden" class="border bg-white p-2 w-full text-sm" id="INC_codigo" name="INC_codigo">
             <div class="flex justify-center mx-2 mb-4">
                 <div class="flex-1 max-w-[500px] px-2 mb-2 flex items-center">
-                    <label for="INC_codigo_visible" class="block font-bold mb-1 mr-1 text-lime-500">Nro Incidencia:</label>
-                    <input disabled type="text" class="w-20 border border-gray-200 bg-gray-100 rounded-md p-2 text-sm" id="INC_codigo_visible"
+                    <label for="INC_codigo_visible" class="block font-bold mb-1 mr-1 text-lime-500">Nro
+                        Incidencia:</label>
+                    <input disabled type="text" class="w-20 border border-gray-200 bg-gray-100 rounded-md p-2 text-sm"
+                           id="INC_codigo_visible"
                            name="INC_codigo_visible">
                 </div>
             </div>
@@ -117,21 +119,39 @@
                 </div>
                 <div class="w-full md:w-1/3 px-2 mb-4">
                     <label for="fecha_recepcion" class="block font-bold mb-1">Fecha de Recepcion:</label>
-                    <input type="date" id="fecha_recepcion" name="fecha_recepcion" class="border p-2 w-full text-sm" readonly
-                           disabled>
+                    <input type="date" id="fecha_recepcion" name="fecha_recepcion"
+                           class="border border-gray-200 bg-gray-100 p-2 w-full text-sm"
+                           value="<?php echo date('Y-m-d'); ?>" readonly
+                           >
                 </div>
                 <div class="w-full md:w-1/3 px-2 mb-4">
+                    <label for="usuarioDisplay" class="block font-bold mb-1">Usuario:</label>
+                    <input type="text" id="usuarioDisplay" name="usuarioDisplay"
+                           class="border border-gray-200 bg-gray-100 p-2 w-full text-sm" value="<?php echo $_SESSION['usuario'];?>">
+                </div>
+                <div class="w-full md:w-1/3 px-2 mb-4 hidden">
                     <label for="usuario" class="block font-bold mb-1">Usuario:</label>
-                    <input type="text" id="usuario" name="usuario" class="border p-2 w-full text-sm">
+                    <input type="text" id="usuario" name="usuario"
+                           class="border border-gray-200 bg-gray-100 p-2 w-full text-sm" value="<?php echo $_SESSION['codigoUsuario'];?>">
                 </div>
             </div>
-
             <div class="flex flex-wrap -mx-2 mb-4">
                 <div class="w-full md:w-1/3 px-2 mb-4">
                     <label for="hora" class="block font-bold mb-1">Hora:</label>
-                    <input type="time" id="hora" name="hora" class="border p-2 w-full text-sm" readonly
-                           disabled>
+                    <?php
+                    // Establecer la zona horaria deseada
+                    date_default_timezone_set('America/Lima');
+
+                    // Obtener la hora actual en formato de 24 horas (HH:MM)
+                    $horaActual = date('H:i');
+
+                    // Mostrar un campo de texto con la hora actual
+                    ?>
+                    <input type="text" id="hora" name="hora"
+                           class="border border-gray-200 bg-gray-100 p-2 w-full text-sm"
+                           value="<?php echo $horaActual; ?>" readonly>
                 </div>
+
                 <div class="w-full md:w-1/3 px-2 mb-4">
                     <label for="prioridad" class="block font-bold mb-1">Prioridad:</label>
                     <select id="prioridad" name="prioridad" class="border p-2 w-full text-sm">

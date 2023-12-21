@@ -34,7 +34,7 @@
     <!-- Header -->
     <h1 class="text-xl font-bold mb-4"">Registro de Incidencia</h1>
     <!-- Formulario -->
-    <form action="registro-incidencia.php?action=registrar" method="POST" class="border bg-white p-2 w-full text-sm rounded-md">
+    <form action="registro-incidencia.php?action=registrar" method="POST" class="border bg-white shadow-md p-6 w-full text-sm rounded-md">
         <!-- PRIMERA FILA Campo para mostrar el número de incidencia -->
         <div class="flex items-center mb-4">
             <label for="numero_incidencia" class="block font-bold mb-1 mr-1 text-lime-500">Nro Incidencia:</label>
@@ -52,13 +52,12 @@
             </div>
             <div class="w-full md:w-1/3 px-2 mb-2">
                 <label for="hora" class="block font-bold mb-1">Hora:</label>
-                <input type="time" id="hora" name="hora" class="border p-2 w-full text-sm" readonly disabled>
+                <input type="time" id="hora" name="hora" class="border border-gray-200 bg-gray-100 p-2 w-full text-sm" readonly>
 
             </div>
             <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">
                 <label for="fecha" class="block mb-1 font-bold text-sm">Fecha:</label>
-                <input type="date" id="fecha" name="fecha"
-                       class="border p-2 w-full text-sm" readonly disabled>
+                <input type="date" id="fecha" name="fecha" class="border border-gray-200 bg-gray-100 p-2 w-full text-sm" readonly>
             </div>
         </div>
         <?php
@@ -125,6 +124,7 @@
         </div>
 
     </form>
+    <!-- Fin del formulario -->
 </main>
 </body>
 <script>

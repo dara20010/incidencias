@@ -11,14 +11,14 @@ class IncidenciaModel
         $this->conexion = new Conexion();
     }
 
-    public function insertarIncidencia($INC_fechaHora, $INC_asunto, $INC_codigoPatrimonial, $INC_documento, $INC_estado, $INC_numDocumento, $INC_observacion, $CAT_codigo, $PRI_codigo, $ARE_codigo, $USU_codigo)
+    public function insertarIncidencia($INC_fecha, $INC_asunto, $INC_codigoPatrimonial, $INC_documento, $INC_estado, $INC_numDocumento, $INC_observacion, $CAT_codigo, $PRI_codigo, $ARE_codigo, $USU_codigo,$INC_hora)
     {
         $conn = $this->conexion->getConexion();
 
         if ($conn != null) {
             // Preparar la consulta SQL para la inserción sin incluir el campo id
-            $sql = "INSERT INTO Incidencia (INC_fecha, INC_asunto, INC_codigoPatrimonial, INC_documento, INC_estado, INC_numDocumento, INC_observacion, CAT_codigo, PRI_codigo, ARE_codigo, USU_codigo)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO Incidencia (INC_fecha, INC_asunto, INC_codigoPatrimonial, INC_documento, INC_estado, INC_numDocumento, INC_observacion, CAT_codigo, PRI_codigo, ARE_codigo, USU_codigo,INC_hora)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
             // Preparar la sentencia
             $stmt = $conn->prepare($sql);
@@ -26,7 +26,7 @@ class IncidenciaModel
             // Ejecutar la inserción sin proporcionar el valor para el campo id
             $success = $stmt->execute(
                 [
-                    $INC_fechaHora,
+                    $INC_fecha,
                     $INC_asunto,
                     $INC_codigoPatrimonial,
                     $INC_documento,
@@ -36,7 +36,7 @@ class IncidenciaModel
                     $CAT_codigo,
                     2,
                     $ARE_codigo,
-                    1]
+                    1,$INC_hora]
             );
 
             if ($success) {
