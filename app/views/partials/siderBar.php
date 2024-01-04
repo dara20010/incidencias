@@ -42,6 +42,7 @@
 
     <!-- Etiquetas con submenús -->
     <nav class="flex-1 mt-20">
+        <a href="pagina-inicio.php" class="block py-2 px-4 hover:bg-[#d5fab4] ">Inicio</a>
         <!-- Etiqueta con submenú: Consultar -->
         <div x-data="{ open: false }">
             <button @click="open = !open" class="block py-2 px-4 hover:bg-[#d5fab4]  flex justify-between w-full">
@@ -105,8 +106,9 @@
 
     <!-- Botón Cerrar Sesión -->
     <div class="py-4 px-4 border-t border-gray-300">
-        <button href="logout.php" class="w-full text-white bg-[#87cd51] hover:bg-[#b1f774] font-bold py-2 px-4 rounded ">
-            Cerrar Sesión
+        <button  class="w-full text-white bg-[#87cd51] hover:bg-[#b1f774] font-bold py-2 px-4 rounded ">
+
+            <a href="logout.php">Cerrar Sesión </a>
         </button>
     </div>
 </aside>

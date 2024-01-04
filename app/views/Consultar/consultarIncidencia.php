@@ -36,44 +36,48 @@
 
     <!-- Formulario -->
     <div class="mb-8 mt-8">
-        <form action="consultar-incidencia.php?action=consultar" method="POST">
+        <!-- Formulario -->
+        <form action="consultar-incidencia.php" method="GET">
             <div class="flex flex-wrap -mx-2">
                 <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">
-                    <label for="numero_i
-                    ncidencia" class="block mb-1 font-bold text-sm">Nro de Incidencia:</label>
-
-                    <input type="text" id="numero_incidencia" name="numero_incidencia"
-                           class="w-full border-gray-300 rounded-md p-2 text-sm">
-
+                    <label for="numero_incidencia" class="block mb-1 font-bold text-sm">Nro de Incidencia:</label>
+                    <input type="text" id="numero_incidencia" name="numero_incidencia" class="w-full border-gray-300 rounded-md p-2 text-sm">
                 </div>
                 <div class="w-full md:w-1/3 px-2 mb-2">
                     <label for="area" class="block mb-1 font-bold text-sm">Área:</label>
                     <select id="area" name="area"
-                            class="w-full border-gray-300 rounded-md p-2 text-sm">
+                            class="border p-2 w-full text-sm">
                     </select>
-
                 </div>
                 <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-2">
                     <label for="fecha" class="block mb-1 font-bold text-sm">Fecha:</label>
-                    <input type="date" id="fecha" name="fecha"
-                           class="w-full border-gray-300 rounded-md p-2 text-sm">
+                    <input type="date" id="fecha" name="fecha" class="w-full border-gray-300 rounded-md p-2 text-sm">
                 </div>
             </div>
 
             <!-- Botones del formulario -->
-            <div class="flex justify-center space-x-4">
-                <button type="button" class="bg-blue-500 text-white font-bold hover:bg-[#4c8cf5] py-2 px-4 rounded">
+            <div class="flex justify-center space-x-4 mt-4">
+                <button type="submit" class="bg-blue-500 text-white font-bold hover:bg-[#4c8cf5] py-2 px-4 rounded">
                     Buscar
+                </button>
+                <button type="reset" class="bg-green-400 text-white font-bold hover:bg-gray-400 py-2 px-4 rounded">
+                    Limpiar
                 </button>
             </div>
         </form>
     </div>
+    <!-- ... -->
 
-    <!-- RESULTADOS -->
+    <!-- TABLA DE RESULTADOS -->
+
+    <?php if (!empty($busqueda)) : ?>
+
     <div>
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="relative max-h-[350px] overflow-x-hidden shadow-md sm:rounded-lg">
+            <?php if (empty($resultadoBusqueda)) : ?>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-lime-300">
+                <thead class="sticky
+                     top-0 text-xs text-gray-700 uppercase bg-lime-300">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         Num Incidencia
@@ -85,9 +89,6 @@
                         Categoría
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Prioridad
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         Fecha Incidencia
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -96,67 +97,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        COD123
+                <?php foreach ($resultadoBusqueda as $incidencias) : ?>
+                <tr class="bg-white border-b">
+                    <td class="px-6 py-4 dark:text-white">
+                        <?php echo $incidencias['num_incidencia']; ?>
                     </td>
-                    <td class="px-6 py-4">
-                        Asistencia Técnica
+                    <td class="px-6 py-4 dark:text-white">
+                        <?php echo $incidencias['codigo_patrimonial']; ?>
                     </td>
-                    <td class="px-6 py-4">
-                        Alta
+                    <td class="px-6 py-4 dark:text-white">
+                        <?php echo $incidencias['categoria']; ?>
                     </td>
-                    <td class="px-6 py-4">
-                        30-11-2023
+                    <td class="px-6 py-4 dark:text-white">
+                        <?php echo $incidencias['fecha_incidencia']; ?>
                     </td>
-                    <td class="px-6 py-4">
-                        .....
+                    <td class="px-6 py-4 dark:text-white">
+                        <?php echo $incidencias['asunto']; ?>
                     </td>
                 </tr>
-                <tr class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        COD123
-                    </td>
-                    <td class="px-6 py-4">
-                        Asistencia Técnica
-                    </td>
-                    <td class="px-6 py-4">
-                        Alta
-                    </td>
-                    <td class="px-6 py-4">
-                        30-11-2023
-                    </td>
-                    <td class="px-6 py-4">
-                        .....
-                    </td>
-                </tr>
-                <tr class="bg-white border-b ">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        COD123
-                    </td>
-                    <td class="px-6 py-4">
-                        Asistencia Técnica
-                    </td>
-                    <td class="px-6 py-4">
-                        Alta
-                    </td>
-                    <td class="px-6 py-4">
-                        30-11-2023
-                    </td>
-                    <td class="px-6 py-4">
-                        .....
-                    </td>
-                </tr>
-
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -167,4 +126,24 @@
 
 </body>
 
+<script>
+    $(document).ready(function () {
+        console.log("FETCHING")
+        $.ajax({
+            url: '../../../ajax/getAreaData.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var select = $('#area');
+                select.empty();
+                $.each(data, function (index, value) {
+                    select.append('<option value="' + value.ARE_codigo + '">' + value.ARE_nombre + '</option>');
+                });
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    });
+</script>
 </html>

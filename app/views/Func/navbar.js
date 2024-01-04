@@ -1,4 +1,4 @@
-// Espera a que el DOM esté completamente cargado antes de ejecutar el código
+// Espera cierreController que el DOM esté completamente cargado antes de ejecutar el código
 document.addEventListener('DOMContentLoaded', function () {
   // Obtén todos los elementos con la clase 'navbar-burger' (botón para abrir el menú)
   const burger = document.querySelectorAll('.navbar-burger');

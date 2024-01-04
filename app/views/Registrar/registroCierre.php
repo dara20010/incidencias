@@ -24,13 +24,15 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Incluye Alpine.js -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-    <title class="text-center text-3xl font-poppins">Sistema de Incidencias - Registro de Cierre</title>
+    <title class="text-center text-3xl font-poppins">Sistema de Incidencias</title>
 </head>
 
 <body>
+
+<!-- Contenido principal -->
 <main class="bg-[#eeeff1] flex-1 p-4 overflow-y-auto">
     <!-- Header -->
-    <h1 class="text-xl font-bold text-gray-800 mb-4">Registro de Cierre</h1>
+    <h1 class="text-xl font-bold text-gray-800 mb-4">Registro de Cierre </h1>
     <!-- Tabla de datos desde la base de datos -->
 
     <div>
@@ -40,54 +42,46 @@
                      top-0 text-xs text-gray-700 uppercase bg-lime-300">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Num Incidencia
+                        Num Recepcion
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Código Patrimonial
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Categoría
-                    </th>
-                    <!--<th scope="col" class="px-6 py-3">
                         Prioridad
-                    </th>-->
-                    <th scope="col" class="px-6 py-3">
-                        Fecha Incidencia
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Asunto
+                        Fecha Recepcion
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Impacto
                     </th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                require_once './app/models/IncidenciaModel.php';
-                $incidenciaModel = new IncidenciaModel();
-                $incidencias = $incidenciaModel->obtenerIncidenciasSinRecepcionar();
-                foreach ($incidencias as $incidencia) {
-                    echo "<tr class='bg-white hover:bg-green-100 hover:scale-[101%] transition-all hover:cursor-pointer border-b '>";
-                    echo "<th scope='row' class='px-6 py-4 font-medium text-gray-900 whitespace-nowrap '>";
-                    echo $incidencia['INC_codigo'];
-                    echo "</th>";
-                    echo "<td class='px-6 py-4'>";
-                    echo $incidencia['INC_codigoPatrimonial'];
-                    echo "</td>";
-                    echo "<td class='px-6 py-4'>";
-                    echo $incidencia['CAT_codigo'];
-                    echo "</td>";
-                    /*echo "<td class='px-6 py-4'>";
-                    echo $incidencia['PRI_codigo'];
-                    echo "</td>";*/
-                    echo "<td class='px-6 py-4'>";
-                    echo $incidencia['INC_fecha'];
-                    echo "</td>";
-                    echo "<td class='px-6 py-4'>";
-                    echo $incidencia['INC_asunto'];
-                    echo "</td>";
-                    echo "</tr>";
-                }
+                require_once './app/models/RecepcionModel.php'; // Asegúrate de tener el modelo correcto para la recepción
+                $recepcionModel = new RecepcionModel();
 
+                try {
+                    $recepciones = $recepcionModel->obtenerRecepcionesRegistradas(); // Método para obtener datos de recepción desde la base de datos
+
+                    foreach ($recepciones as $recepcion) {
+                        echo "<tr class='bg-white hover:bg-green-100 hover:scale-[101%] transition-all hover:cursor-pointer border-b '>";
+                        echo "<td class='px-6 py-4'>" . $recepcion['REC_codigo'] . "</td>";
+                        echo "<td id='incCodigo' class=' hidden px-6 py-4'>" . $recepcion['INC_codigo'] . "</td>";
+                        echo "<td class='px-6 py-4'>" . $recepcion['codigo_patrimonial'] . "</td>";
+                        echo "<td class='px-6 py-4'>" . $recepcion['prioridad'] . "</td>";
+                        echo "<td class='px-6 py-4'>" . $recepcion['REC_fecha'] . "</td>";
+                        echo "<td class='px-6 py-4'>" . $recepcion['impacto'] . "</td>";
+                        echo "</tr>";
+                    }
+                } catch (Exception $e) {
+                    // Manejo de la excepción, puedes mostrar un mensaje de error o realizar alguna acción específica
+                    echo "Error al obtener las recepciones: " . $e->getMessage();
+                }
                 ?>
+
 
 
                 </tbody>
@@ -99,35 +93,46 @@
 
     <!-- Formulario -->
     <div class="bg-white shadow-md p-4 mb-8 mt-8 rounded-lg">
-        <form action="registro-recepcion.php?action=registrar" method="POST">
-            <input type="hidden" class="border bg-white p-2 w-full text-sm" id="INC_codigo" name="INC_codigo">
+        <form action="registro-cierre.php?action=registrar" method="POST">
+            <input type="hidden" class="border bg-white p-2 w-full text-sm" id="REC_codigo" name="REC_codigo">
             <div class="flex justify-center mx-2 mb-4">
                 <div class="flex-1 max-w-[500px] px-2 mb-2 flex items-center">
-                    <label for="INC_codigo_visible" class="block font-bold mb-1 mr-1 text-lime-500">Nro
-                        Incidencia:</label>
+                    <label for="REC_codigo_visible" class="block font-bold mb-1 mr-1 text-lime-500">Nro
+                        Recepción:</label>
                     <input disabled type="text" class="w-20 border border-gray-200 bg-gray-100 rounded-md p-2 text-sm"
-                           id="INC_codigo_visible"
-                           name="INC_codigo_visible">
+                           id="REC_codigo_visible"
+                           name="REC_codigo_visible">
                 </div>
             </div>
+
+            <!---Fila 2-->
             <div class="flex flex-wrap -mx-2 mb-2">
                 <div class="w-full md:w-1/3 px-2 mb-2">
-                    <label for="num_recepcion" class="block font-bold mb-1">Num Recepcion:</label>
-                    <input type="text" id="num_recepcion" name="num_recepcion" class="border p-2 w-full text-sm">
+                    <label for="num_cierre" class="block font-bold mb-1">Num Cierre:</label>
+                    <input type="text" id="num_cierre" name="num_cierre" class="border p-2 w-full text-sm" readonly>
                 </div>
                 <div class="w-full md:w-1/3 px-2 mb-4">
-                    <label for="fecha_recepcion" class="block font-bold mb-1">Fecha de Recepcion:</label>
-                    <input type="date" id="fecha_recepcion" name="fecha_recepcion"
+                    <label for="fecha_cierre" class="block font-bold mb-1">Fecha de Cierre:</label>
+                    <input type="date" id="fecha_cierre" name="fecha_cierre"
                            class="border border-gray-200 bg-gray-100 p-2 w-full text-sm"
                            value="<?php echo date('Y-m-d'); ?>" readonly
-                           disabled>
+                    >
                 </div>
                 <div class="w-full md:w-1/3 px-2 mb-4">
+                    <label for="usuarioDisplay" class="block font-bold mb-1">Usuario:</label>
+                    <input type="text" id="usuarioDisplay" name="usuarioDisplay"
+                           class="border border-gray-200 bg-gray-100 p-2 w-full text-sm"
+                           value="<?php echo $_SESSION['usuario']; ?>">
+                </div>
+                <div class="w-full md:w-1/3 px-2 mb-4 hidden">
                     <label for="usuario" class="block font-bold mb-1">Usuario:</label>
                     <input type="text" id="usuario" name="usuario"
-                           class="border border-gray-200 bg-gray-100 p-2 w-full text-sm">
+                           class="border border-gray-200 bg-gray-100 p-2 w-full text-sm"
+                           value="<?php echo $_SESSION['codigoUsuario']; ?>">
                 </div>
             </div>
+            <!---Fila 3-->
+
             <div class="flex flex-wrap -mx-2 mb-4">
                 <div class="w-full md:w-1/3 px-2 mb-4">
                     <label for="hora" class="block font-bold mb-1">Hora:</label>
@@ -142,18 +147,46 @@
                     ?>
                     <input type="text" id="hora" name="hora"
                            class="border border-gray-200 bg-gray-100 p-2 w-full text-sm"
-                           value="<?php echo $horaActual; ?>" readonly disabled>
+                           value="<?php echo $horaActual; ?>" readonly>
+                </div>
+                <div class="w-full hidden md:w-1/3 px-2 mb-4">
+                    <label for="incidencia" class="block font-bold mb-1">Inc:</label>
+                    <input type="text" id="incidencia" name="incidencia"
+                           class="border border-gray-200 bg-gray-100 p-2 w-full text-sm" readonly>
                 </div>
 
-                <div class="w-full md:w-1/3 px-2 mb-4">
-                    <label for="prioridad" class="block font-bold mb-1">Prioridad:</label>
-                    <select id="prioridad" name="prioridad" class="border p-2 w-full text-sm">
-                    </select>
+                <div class="w-full md:w-2/3 px-2 mb-4">
+                    <label for="documento" class="block font-bold mb-1">Documento:</label>
+                    <input type="text" id="documento" name="documento" class="border p-2 w-full text-sm">
                 </div>
-                <div class="w-full md:w-1/3 px-2 mb-4">
-                    <label for="impacto" class="block font-bold mb-1">Impacto:</label>
-                    <select id="impacto" name="impacto" class="border p-2 w-full text-sm">
-                    </select>
+            </div>
+
+            <div class="flex flex-wrap -mx-2 mb-4">
+                <div class="w-full px-2 mb-4">
+                    <label for="asunto" class="block font-bold mb-1">Asunto:</label>
+                    <textarea id="asunto" name="asunto" rows="4" class="border p-2 w-full text-sm max-h-40 resize-none overflow-y-auto"></textarea>
+                </div>
+            </div>
+            <!---Fila 4-->
+            <div class="flex flex-wrap -mx-2 mb-4">
+                <div class="w-full px-2 mb-4">
+                    <label for="diagnostico" class="block font-bold mb-1">Diagnostico:</label>
+                    <textarea id="diagnostico" name="diagnostico" rows="4" class="border p-2 w-full text-sm max-h-40 resize-none overflow-y-auto"></textarea>
+                </div>
+            </div>
+            <!-- Fila 5 -->
+            <div class="flex flex-wrap -mx-2 mb-4">
+                <div class="w-full px-2 mb-4">
+                    <label for="solucion" class="block font-bold mb-1">Solución:</label>
+                    <textarea id="solucion" name="solucion" rows="4" class="border p-2 w-full text-sm max-h-40 resize-none overflow-y-auto"></textarea>
+                </div>
+            </div>
+
+            <!-- Fila 6 -->
+            <div class="flex flex-wrap -mx-2 mb-4">
+                <div class="w-full px-2 mb-4">
+                    <label for="recomendaciones" class="block font-bold mb-1">Recomendaciones:</label>
+                    <textarea id="recomendaciones" name="recomendaciones" rows="4" class="border p-2 w-full text-sm max-h-40 resize-none overflow-y-auto"></textarea>
                 </div>
             </div>
 
@@ -171,7 +204,47 @@
     </div>
 </main>
 
-
 </body>
 
+<script>
+
+    $(document).ready(function () {
+        $('tr').click(function () {
+            var id = $(this).find('td:first').text();
+            var incCodigo = $(this).find('td:nth-child(2)').text();
+            //get the value of td with id incCodigo
+            var incCodigo = $(this).find('td:nth-child(2)').text();
+            $('tr').removeClass('bg-blue-200 font-semibold');
+            $(this).addClass('bg-blue-200 font-semibold');
+            $('#REC_codigo').val(id);
+            $('#REC_codigo_visible').val(id);
+            $('#incidencia').val(incCodigo);
+        });
+    });
+
+    $(document).ready(function () {
+        $('#submitButton').click(function () {
+            var form = $('form');
+            var data = form.serialize();
+            console.log(data);
+        });
+    });
+
+    $(document).ready(function () {
+        console.log("FETCHING")
+        $.ajax({
+            url: '../../../ajax/getLastCierre.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var input = $('#num_cierre');
+                input.empty();
+                input.val(data.CIE_codigo);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    });
+</script>
 </html>

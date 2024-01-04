@@ -292,7 +292,7 @@ function Close()
 
 function AddPage($orientation='', $size='', $rotation=0)
 {
-	// Start a new page
+	// Start cierreController new page
 	if($this->state==3)
 		$this->Error('The document is closed');
 	$family = $this->FontFamily;
@@ -410,7 +410,7 @@ function SetTextColor($r, $g=null, $b=null)
 
 function GetStringWidth($s)
 {
-	// Get width of a string in the current font
+	// Get width of cierreController string in the current font
 	$cw = $this->CurrentFont['cw'];
 	$w = 0;
 	$s = (string)$s;
@@ -430,13 +430,13 @@ function SetLineWidth($width)
 
 function Line($x1, $y1, $x2, $y2)
 {
-	// Draw a line
+	// Draw cierreController line
 	$this->_out(sprintf('%.2F %.2F m %.2F %.2F l S',$x1*$this->k,($this->h-$y1)*$this->k,$x2*$this->k,($this->h-$y2)*$this->k));
 }
 
 function Rect($x, $y, $w, $h, $style='')
 {
-	// Draw a rectangle
+	// Draw cierreController rectangle
 	if($style=='F')
 		$op = 'f';
 	elseif($style=='FD' || $style=='DF')
@@ -448,7 +448,7 @@ function Rect($x, $y, $w, $h, $style='')
 
 function AddFont($family, $style='', $file='')
 {
-	// Add a TrueType, OpenType or Type1 font
+	// Add cierreController TrueType, OpenType or Type1 font
 	$family = strtolower($family);
 	if($file=='')
 		$file = str_replace(' ','',$family).strtolower($style).'.php';
@@ -473,7 +473,7 @@ function AddFont($family, $style='', $file='')
 
 function SetFont($family, $style='', $size=0)
 {
-	// Select a font; size given in points
+	// Select cierreController font; size given in points
 	if($family=='')
 		$family = $this->FontFamily;
 	else
@@ -534,7 +534,7 @@ function SetFontSize($size)
 
 function AddLink()
 {
-	// Create a new internal link
+	// Create cierreController new internal link
 	$n = count($this->links)+1;
 	$this->links[$n] = array(0, 0);
 	return $n;
@@ -552,13 +552,13 @@ function SetLink($link, $y=0, $page=-1)
 
 function Link($x, $y, $w, $h, $link)
 {
-	// Put a link on the page
+	// Put cierreController link on the page
 	$this->PageLinks[$this->page][] = array($x*$this->k, $this->hPt-$y*$this->k, $w*$this->k, $h*$this->k, $link);
 }
 
 function Text($x, $y, $txt)
 {
-	// Output a string
+	// Output cierreController string
 	if(!isset($this->CurrentFont))
 		$this->Error('No font has been set');
 	$txt = (string)$txt;
@@ -578,7 +578,7 @@ function AcceptPageBreak()
 
 function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 {
-	// Output a cell
+	// Output cierreController cell
 	$k = $this->k;
 	if($this->y+$h>$this->PageBreakTrigger && !$this->InHeader && !$this->InFooter && $this->AcceptPageBreak())
 	{
@@ -1003,7 +1003,7 @@ function Output($dest='', $name='', $isUTF8=false)
 			$this->_checkoutput();
 			if(PHP_SAPI!='cli')
 			{
-				// We send to a browser
+				// We send to cierreController browser
 				header('Content-Type: application/pdf');
 				header('Content-Disposition: inline; '.$this->_httpencode('filename',$name,$isUTF8));
 				header('Cache-Control: private, max-age=0, must-revalidate');
@@ -1026,7 +1026,7 @@ function Output($dest='', $name='', $isUTF8=false)
 				$this->Error('Unable to create output file: '.$name);
 			break;
 		case 'S':
-			// Return as a string
+			// Return as cierreController string
 			return $this->buffer;
 		default:
 			$this->Error('Incorrect output destination: '.$dest);
@@ -1050,7 +1050,7 @@ protected function _checkoutput()
 		// The output buffer is not empty
 		if(preg_match('/^(\xEF\xBB\xBF)?\s*$/',ob_get_contents()))
 		{
-			// It contains only a UTF-8 BOM and/or whitespace, let's clean it
+			// It contains only cierreController UTF-8 BOM and/or whitespace, let's clean it
 			ob_clean();
 		}
 		else
@@ -1132,7 +1132,7 @@ protected function _endpage()
 
 protected function _loadfont($font)
 {
-	// Load a font definition file from the font directory
+	// Load cierreController font definition file from the font directory
 	if(strpos($font,'/')!==false || strpos($font,"\\")!==false)
 		$this->Error('Incorrect font definition file name: '.$font);
 	include($this->fontpath.$font);
@@ -1235,7 +1235,7 @@ protected function _escape($s)
 
 protected function _textstring($s)
 {
-	// Format a text string
+	// Format cierreController text string
 	if(!$this->_isascii($s))
 		$s = $this->_UTF8toUTF16($s);
 	return '('.$this->_escape($s).')';
@@ -1252,12 +1252,12 @@ protected function _dounderline($x, $y, $txt)
 
 protected function _parsejpg($file)
 {
-	// Extract info from a JPEG file
+	// Extract info from cierreController JPEG file
 	$a = getimagesize($file);
 	if(!$a)
 		$this->Error('Missing or incorrect image file: '.$file);
 	if($a[2]!=2)
-		$this->Error('Not a JPEG file: '.$file);
+		$this->Error('Not cierreController JPEG file: '.$file);
 	if(!isset($a['channels']) || $a['channels']==3)
 		$colspace = 'DeviceRGB';
 	elseif($a['channels']==4)
@@ -1271,7 +1271,7 @@ protected function _parsejpg($file)
 
 protected function _parsepng($file)
 {
-	// Extract info from a PNG file
+	// Extract info from cierreController PNG file
 	$f = fopen($file,'rb');
 	if(!$f)
 		$this->Error('Can\'t open image file: '.$file);
@@ -1284,7 +1284,7 @@ protected function _parsepngstream($f, $file)
 {
 	// Check signature
 	if($this->_readstream($f,8)!=chr(137).'PNG'.chr(13).chr(10).chr(26).chr(10))
-		$this->Error('Not a PNG file: '.$file);
+		$this->Error('Not cierreController PNG file: '.$file);
 
 	// Read header chunk
 	$this->_readstream($f,4);
@@ -1425,14 +1425,14 @@ protected function _readstream($f, $n)
 
 protected function _readint($f)
 {
-	// Read a 4-byte integer from stream
+	// Read cierreController 4-byte integer from stream
 	$a = unpack('Ni',$this->_readstream($f,4));
 	return $a['i'];
 }
 
 protected function _parsegif($file)
 {
-	// Extract info from a GIF file (via PNG conversion)
+	// Extract info from cierreController GIF file (via PNG conversion)
 	if(!function_exists('imagepng'))
 		$this->Error('GD extension is required for GIF support');
 	if(!function_exists('imagecreatefromgif'))
@@ -1457,7 +1457,7 @@ protected function _parsegif($file)
 
 protected function _out($s)
 {
-	// Add a line to the current page
+	// Add cierreController line to the current page
 	if($this->state==2)
 		$this->pages[$this->page] .= $s."\n";
 	elseif($this->state==0)
@@ -1470,7 +1470,7 @@ protected function _out($s)
 
 protected function _put($s)
 {
-	// Add a line to the document
+	// Add cierreController line to the document
 	$this->buffer .= $s."\n";
 }
 
@@ -1481,7 +1481,7 @@ protected function _getoffset()
 
 protected function _newobj($n=null)
 {
-	// Begin a new object
+	// Begin cierreController new object
 	if($n===null)
 		$n = ++$this->n;
 	$this->offsets[$n] = $this->_getoffset();

@@ -75,11 +75,8 @@
                     echo $incidencia['INC_codigoPatrimonial'];
                     echo "</td>";
                     echo "<td class='px-6 py-4'>";
-                    echo $incidencia['CAT_codigo'];
+                    echo $incidencia['CAT_nombre'];
                     echo "</td>";
-                    /*echo "<td class='px-6 py-4'>";
-                    echo $incidencia['PRI_codigo'];
-                    echo "</td>";*/
                     echo "<td class='px-6 py-4'>";
                     echo $incidencia['INC_fecha'];
                     echo "</td>";

@@ -17,12 +17,12 @@ class RecepcionController
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Obtener los datos del formulario
-            $USU_codigo = $_POST['usuario'];
-            $IMP_codigo = $_POST['impacto'];
-            $PRI_codigo = $_POST['prioridad'];
-            $REC_hora = $_POST['hora'];
-            $REC_fecha = $_POST['fecha_recepcion'];
             $INC_codigo = $_POST['INC_codigo'];
+            $REC_fecha = $_POST['fecha_recepcion'];
+            $USU_codigo = $_POST['usuario'];
+            $REC_hora = $_POST['hora'];
+            $PRI_codigo = $_POST['prioridad'];
+            $IMP_codigo = $_POST['impacto'];
 
 
             // Llamar al método del modelo para insertar la recepcion en la base de datos

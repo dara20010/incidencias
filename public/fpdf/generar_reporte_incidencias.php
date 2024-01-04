@@ -12,7 +12,7 @@ $registrosIncidencias = $incidenciaModel->obtenerRegistrosIncidencias(); // Esta
 if ($registrosIncidencias !== null && !empty($registrosIncidencias)) {
     // Aquí puedes utilizar los datos obtenidos ($registrosIncidencias) para generar tu PDF con FPDF
     // Por ejemplo, recorrer los registros y construir una tabla en el PDF
-    // Llamar a métodos de FPDF para construir el PDF
+    // Llamar cierreController métodos de FPDF para construir el PDF
     // ...
 
     // Una vez generado el PDF, podrías descargarlo o mostrarlo en el navegador

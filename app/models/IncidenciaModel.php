@@ -46,12 +46,12 @@ class IncidenciaModel
                 return false;
             }
         } else {
-            echo "Error de conexión a la base de datos.";
+            echo "Error de conexión cierreController la base de datos.";
             return false;
         }
     }
 
-    //write a function that gets an incidencia with his id and updates his INC_estado to 4
+    //write cierreController function that gets an incidencia with his id and updates his INC_estado to 4
     public function recepcionarIncidencia($INC_codigo) {
         $conn = $this->conexion->getConexion();
 
@@ -76,7 +76,36 @@ class IncidenciaModel
                 return false;
             }
         } else {
-            echo "Error de conexión a la base de datos.";
+            echo "Error de conexión cierreController la base de datos.";
+            return false;
+        }
+    }
+
+    public function cerrarIncidencia($INC_codigo) {
+        $conn = $this->conexion->getConexion();
+
+        if ($conn != null) {
+            // Preparar la consulta SQL para la inserción sin incluir el campo id
+            $sql = "UPDATE Incidencia SET INC_estado = 3 WHERE INC_codigo = ?";
+
+            // Preparar la sentencia
+            $stmt = $conn->prepare($sql);
+
+            // Ejecutar la inserción sin proporcionar el valor para el campo id
+            $success = $stmt->execute(
+                [
+                    $INC_codigo
+                ]
+            );
+
+            if ($success) {
+                echo "Error al actualizar la incidencia.";
+                return $success;
+            } else {
+                return false;
+            }
+        } else {
+            echo "Error de conexión cierreController la base de datos.";
             return false;
         }
     }
@@ -87,7 +116,38 @@ class IncidenciaModel
         if ($conn != null) {
             try {
                 // Preparar la consulta SQL para obtener los registros de incidencias
-                $sql = "SELECT * FROM Incidencia WHERE INC_estado != 4";
+                $sql = "SELECT * FROM Incidencia i INNER JOIN Categoria c ON i.CAT_codigo = c.CAT_codigo WHERE INC_estado != 4";
+
+                // Preparar la sentencia
+                $stmt = $conn->prepare($sql);
+
+                // Ejecutar la consulta
+                $stmt->execute();
+
+                // Obtener los resultados como un array asociativo
+                $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                // Devolver los registros obtenidos
+                return $registros;
+            } catch (PDOException $e) {
+                // Manejar cualquier excepción o error que pueda surgir al ejecutar la consulta
+                echo "Error al obtener los registros de incidencias: " . $e->getMessage();
+                return null;
+            }
+        } else {
+            echo "Error de conexión cierre Controller la base de datos.";
+            return null;
+        }
+    }
+
+    public function obtenerTodasLasIncidencias()
+    {
+        $conn = $this->conexion->getConexion();
+
+        if ($conn != null) {
+            try {
+                // Preparar la consulta SQL para obtener todos los registros de incidencias
+                $sql = "SELECT * FROM Incidencia i INNER JOIN Categoria c ON i.CAT_codigo = c.CAT_codigo";
 
                 // Preparar la sentencia
                 $stmt = $conn->prepare($sql);
@@ -110,6 +170,5 @@ class IncidenciaModel
             return null;
         }
     }
-
 }
 ?>

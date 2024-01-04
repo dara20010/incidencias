@@ -4,11 +4,11 @@ require_once 'config/conexion.php';
 //Esta clase maneja la autenticacion y los roles
 class UsuarioModel
 {
-    private $db; //Almacena la conexion a la bd
+    private $db; //Almacena la conexion cierreController la bd
     protected $usuario;
     protected $password;
 
-    //Método constructor: Estable la conexion a la bd
+    //Método constructor: Estable la conexion cierreController la bd
     public function __construct()
     {
         $this->db = (new Conexion())->getConexion();
@@ -97,9 +97,9 @@ class UsuarioModel
         $rol = $this->obtenerRol($username);
         if($rol ==='Administrador'){
             //Redirige al panel de administrador
-            header('Location: registro-incidencia.php');
+            header('Location: pagina-inicio.php');
         }elseif ($rol === 'Trabajador'){
-            header('Location:registro-incidencia.php');
+            header('Location:pagina-inicio.php');
         }else{
             //No se redirige
         }

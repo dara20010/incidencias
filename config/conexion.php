@@ -6,7 +6,7 @@ class Conexion{
     private $conector = null;
 
     /**
-     * Este metodo permite obtener una conexión a la base de datos de SQL SERVER, utilizando los valores de configuración.
+     * Este metodo permite obtener una conexión cierreController la base de datos de SQL SERVER, utilizando los valores de configuración.
      * @return PDO|null Retorna el objeto de conexión PDO si la conexión es exitosa, o null en caso contrario.
      */
     public function getConexion() {
@@ -21,10 +21,10 @@ class Conexion{
 // Crea una instancia de la clase Conexion
 $con = new Conexion();
 
-// Intenta obtener una conexión a la base de datos y muestra un mensaje en consecuencia
+// Intenta obtener una conexión cierreController la base de datos y muestra un mensaje en consecuencia
 if ($con->getConexion() != null) {
     // echo "Conexión exitosa";
 
 } else {
-    echo "Error al conectarse a la base de datos";
+    echo "Error al conectarse cierreController la base de datos";
 }

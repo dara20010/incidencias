@@ -30,9 +30,22 @@ class IncidenciaController
             $insertSuccess = $this->incidenciaModel->insertarIncidencia($fecha, $asunto, $codigo_patrimonial, $documento, 1, $numero_documento, $descripcion, $categoria, 2, $area, 1,$hora);
 
             if ($insertSuccess) {
-                    // Redirigir a la página de consulta de incidencias.bak
-                    header('Location: registro-incidencia.php');
-                } else {
+                // Redirigir cierreController la página de consulta de incidencias.bak
+                $incidencias = $this->incidenciaModel->obtenerTodasLasIncidencias();
+                // Mostrar los datos de las incidencias
+                foreach ($incidencias as $incidencia) {
+                    echo "CATEGORIA: " . $incidencia['categoria'] . "<br>";
+                    echo "AREA: " . $incidencia['area'] . "<br>";
+                    echo "FECHA: " . $incidencia['fecha'] . "<br>";
+                    echo "HORA: " . $incidencia['hora'] . "<br>";
+                    echo "CODIGO PATRIMONIAL: " . $incidencia['codigo_patrimonial'] . "<br>";
+                    echo "ASUNTO: " . $incidencia['asunto'] . "<br>";
+                    echo "NUMERO DE DOCUMENTO: " . $incidencia['numero_documento'] . "<br>";
+                    echo "DOCUMENTO: " . $incidencia['documento'] . "<br>";
+                    echo "DESCRIPCION: " . $incidencia['descripcion'] . "<br>";
+                    echo "<hr>";
+                }
+            }else {
                     // Mostrar un mensaje de error
                     echo "Error al registrar la incidencia.";
                 }
@@ -41,6 +54,7 @@ class IncidenciaController
             echo "Error: Método no permitido.";
         }
     }
+
 }
 
 ?>

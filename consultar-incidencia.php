@@ -1,4 +1,32 @@
 <?php
+session_start();
+// Verificar si no hay una sesión iniciada
+if (!isset($_SESSION['username'])) {
+    //header("Location: index.php"); // Redirigir a la página de inicio de sesión si no hay sesión iniciada
+    exit();
+}
+
+$busqueda = $_GET['busqueda'] ?? '';
+
+// Importar el controlador necesario
+require_once 'app/controllers/consultaIncidenciaController.php';
+
+// Crear una instancia de la conexión a la base de datos
+$conexion = new Conexion();
+$conector = $conexion->getConexion();
+
+// Crear instancias de los modelos
+$modelIncidencias = new Incidencia($conector);
+
+$controller = new IncidenciasController($modelIncidencias);
+
+$resultadoBusqueda = NULL;
+
+if (!empty($busqueda)) {
+    $resultadoBusqueda = $controller->consultarIncidencias();
+} else {
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

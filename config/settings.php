@@ -1,6 +1,6 @@
 <?php
 // DEFINIENDO LAS CREDENCIALES
-// Nombre de usuario para la conexión a la BD
+// Nombre de usuario para la conexión cierreController la BD
 define("USUARIO", NULL);
 // Contraseña para la conexión
 define("PASSWORD", NULL);

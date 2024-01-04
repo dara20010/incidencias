@@ -34,7 +34,7 @@
     <!-- Header -->
     <h1 class="text-xl font-bold mb-4"">Registro de Incidencia</h1>
     <!-- Formulario -->
-    <form action="registro-incidencia.php?action=registrar" method="POST" class="border bg-white shadow-md p-6 w-full text-sm rounded-md">
+    <form id="formIncidencia" action="registro-incidencia.php?action=registrar" method="POST" class="border bg-white shadow-md p-6 w-full text-sm rounded-md">
         <!-- PRIMERA FILA Campo para mostrar el número de incidencia -->
         <div class="flex items-center mb-4">
             <label for="numero_incidencia" class="block font-bold mb-1 mr-1 text-lime-500">Nro Incidencia:</label>
@@ -116,12 +116,23 @@
 
         <!-- Botónes -->
         <div class="flex justify-center space-x-4">
-            <button type="submit"
-                    class="bg-[#87cd51] text-white font-bold hover:bg-[#8ce83c] py-2 px-4 rounded">
-                Registrar
+            <button type="submit" id="guardar-incidencia" class="bg-[#87cd51] text-white font-bold hover:bg-[#8ce83c] py-2 px-4 rounded">
+                Guardar
             </button>
-
+            <button type="button" class="bg-blue-500 text-white font-bold hover:bg-blue-600 py-2 px-4 rounded">
+                Editar
+            </button>
+            <button type="button" id="imprimirDatos" class="bg-yellow-500 text-white font-bold hover:bg-yellow-600 py-2 px-4 rounded w-full md:w-auto mt-2 md:mt-0">
+                Imprimir
+            </button>
+            <button type="button" id="limpiarCampos" class="bg-red-500 text-white font-bold hover:bg-red-600 py-2 px-4 rounded w-full md:w-auto mt-2 md:mt-0">
+                Limpiar
+            </button>
+            <button type="button" id="nuevoRegistro" class="bg-gray-500 text-white font-bold hover:bg-gray-600 py-2 px-4 rounded w-full md:w-auto mt-2 md:mt-0">
+                Nuevo
+            </button>
         </div>
+
 
     </form>
     <!-- Fin del formulario -->
@@ -183,5 +194,49 @@
             }
         });
     });
+    function limpiarCampos() {
+        // Obtener el formulario por su ID
+        const form = document.getElementById('formIncidencia');
+        // Limpiar los campos del formulario
+        form.reset();
+    }
+   const btnLimpiar = document.getElementById('limpiarCampos');
+    btnLimpiar.addEventListener('click', limpiarCampos);
+
+    function nuevoRegistro() {
+        const form = document.getElementById('formIncidencia');
+
+        // Restablecer el formulario
+        form.reset();
+    }
+    // Asignar el evento 'click' al botón 'Nuevo Registro'
+    const btnNuevo = document.getElementById('nuevoRegistro');
+    btnNuevo.addEventListener('click', nuevoRegistro);
+
+    //GUARDAR DATOS
+    $(document).ready(function() {
+        $("#guardar-incidencia").on("click", function() {
+            // Obtener los datos del formulario
+            var formData = $("form").serialize(); // Obtener los datos del formulario
+
+            $.ajax({
+                url: "registro-incidencia.php", // Reemplaza "tu_archivo_de_backend.php" con tu ruta de backend
+                type: "POST",
+                data: formData,
+                success: function(response) {
+                    // Manejar la respuesta del servidor si es necesario
+                    alert("Datos guardados exitosamente");
+                    // Puedes limpiar el formulario si lo deseas
+                    $("form")[0].reset();
+                },
+                error: function(xhr, status, error) {
+                    // Manejar los errores si la solicitud falla
+                    console.error(error);
+                    alert("Error al guardar los datos. Por favor, inténtalo de nuevo.");
+                }
+            });
+        });
+    });
+
 </script>
 </html>
