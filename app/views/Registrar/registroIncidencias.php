@@ -39,7 +39,7 @@
     <!-- Formulario -->
     <form id="formIncidencia" action="registro-incidencia.php?action=registrar" method="POST" class="border bg-white shadow-md p-6 w-full text-sm rounded-md">
         <!-- PRIMERA FILA Campo para mostrar el número de incidencia -->
-        <div class="flex items-center mb-4">
+        <div class="flex items-center mb-4 hidden">
             <label for="numero_incidencia" class="block font-bold mb-1 mr-1 text-lime-500">Nro Incidencia:</label>
             <input type="text" id="numero_incidencia" name="numero_incidencia"
                    class="w-20 border border-gray-200 bg-gray-100 rounded-md p-2 text-sm" readonly disabled>

@@ -20,3 +20,15 @@ Array
 Array
 Array
 Array
+Username: admin, Password: 123456
+SP Result: Array
+INFORMACION USUARIO Result: Array
+------- START LOGIN LOGS ---------
+Session Contents: Array
+(
+    [nombreDePersona] => Gustavo
+    [codigoUsuario] => 3
+    [usuario] => admin
+)
+
+Código de Usuario: 3, Nombre de Persona: 

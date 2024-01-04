@@ -31,6 +31,9 @@
 
 <!-- Contenido principal -->
 <main class="bg-[#eeeff1] flex-1 p-4 overflow-y-auto">
+    <?php
+    global $recepcionRegistrada;
+    ?>
     <!-- Header -->
     <h1 class="text-xl font-bold text-gray-800 mb-4">Registro de Recepción</h1>
     <!-- Tabla de datos desde la base de datos -->
@@ -98,7 +101,7 @@
 
     <!-- Formulario -->
     <div class="bg-white shadow-md p-4 mb-8 mt-8 rounded-lg">
-        <form action="registro-recepcion.php?action=registrar" method="POST">
+        <form id="formRecepcion" action="registro-recepcion.php?action=registrar" method="POST">
             <input type="hidden" class="border bg-white p-2 w-full text-sm" id="INC_codigo" name="INC_codigo">
             <div class="flex justify-center mx-2 mb-4">
                 <div class="flex-1 max-w-[500px] px-2 mb-2 flex items-center">
@@ -110,8 +113,8 @@
                 </div>
             </div>
             <div class="flex flex-wrap -mx-2 mb-2">
-                <div class="w-full md:w-1/3 px-2 mb-2">
-                    <label for="num_recepcion" class="block font-bold mb-1">Num Recepcion:</label>
+                <div class="w-full md:w-1/3 px-2 mb-2 hidden">
+                    <label for="num_recepcion" class="block font-bold mb-1 ">Num Recepcion:</label>
                     <input type="text" id="num_recepcion" name="num_recepcion" class="border p-2 w-full text-sm">
                 </div>
                 <div class="w-full md:w-1/3 px-2 mb-4">
@@ -160,16 +163,34 @@
                     </select>
                 </div>
             </div>
+            <script>
+                document.getElementById('num_recepcion').value = '<?php echo $recepcionRegistrada? $recepcionRegistrada['REC_codigo']: ''; ?>';
+                document.getElementById('hora').value = '<?php echo $recepcionRegistrada? $recepcionRegistrada['REC_hora']: $hora_actual; ?>';
+                document.getElementById('fecha').value = '<?php echo $recepcionRegistrada? $recepcionRegistrada['REC_fecha']: $fecha_actual; ?>';
+                document.getElementById('prioridad').value = '<?php echo $recepcionRegistrada? $recepcionRegistrada['PRI_codigo']: ''; ?>';
+                document.getElementById('impacto').value = '<?php echo $recepcionRegistrada? $recepcionRegistrada['IMP_codigo']: ''; ?>';
+
+            </script>
 
 
-            <!-- Botones del formulario -->
+
+            <!-- Botónes -->
             <div class="flex justify-center space-x-4">
-                <button type="submit"
-                        id="submitButton"
-                        class="bg-[#87cd51] text-white font-bold hover:bg-[#8ce83c] py-2 px-4 rounded">
-                    Registrar
+                <button type="submit" id="guardar-incidencia" class="bg-[#87cd51] text-white font-bold hover:bg-[#8ce83c] py-2 px-4 rounded">
+                    Guardar
                 </button>
-
+                <button type="button" class="bg-blue-500 text-white font-bold hover:bg-blue-600 py-2 px-4 rounded">
+                    Editar
+                </button>
+                <button type="button" id="imprimirDatos" class="bg-yellow-500 text-white font-bold hover:bg-yellow-600 py-2 px-4 rounded w-full md:w-auto mt-2 md:mt-0">
+                    Imprimir
+                </button>
+                <button type="button" id="limpiarCampos" class="bg-red-500 text-white font-bold hover:bg-red-600 py-2 px-4 rounded w-full md:w-auto mt-2 md:mt-0">
+                    Limpiar
+                </button>
+                <button type="button" id="nuevoRegistro" class="bg-gray-500 text-white font-bold hover:bg-gray-600 py-2 px-4 rounded w-full md:w-auto mt-2 md:mt-0">
+                    Nuevo
+                </button>
             </div>
         </form>
     </div>
@@ -190,6 +211,8 @@
                 $.each(data, function (index, value) {
                     select.append('<option value="' + value.PRI_codigo + '">' + value.PRI_nombre + '</option>');
                 });
+                document.getElementById('prioridad').value = '<?php echo $recepcionRegistrada? $recepcionRegistrada['CAT_codigo']: ''; ?>';
+
             },
             error: function (error) {
                 console.error(error);
@@ -208,6 +231,8 @@
                 $.each(data, function (index, value) {
                     select.append('<option value="' + value.IMP_codigo + '">' + value.IMP_nombre + '</option>');
                 });
+                document.getElementById('impacto').value = '<?php echo $recepcionRegistrada? $recepcionRegistrada['IMP_codigo']: ''; ?>';
+
             },
             error: function (error) {
                 console.error(error);
@@ -249,5 +274,24 @@
             }
         });
     });
+
+    function limpiarCampos() {
+        // Obtener el formulario por su ID
+        const form = document.getElementById('formRecepcion');
+        // Limpiar los campos del formulario
+        form.reset();
+    }
+    const btnLimpiar = document.getElementById('limpiarCampos');
+    btnLimpiar.addEventListener('click', limpiarCampos);
+
+    function nuevoRegistro() {
+        const form = document.getElementById('formRecepcion');
+
+        // Restablecer el formulario
+        form.reset();
+    }
+    // Asignar el evento 'click' al botón 'Nuevo Registro'
+    const btnNuevo = document.getElementById('nuevoRegistro');
+    btnNuevo.addEventListener('click', nuevoRegistro);
 </script>
 </html>
