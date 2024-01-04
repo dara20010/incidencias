@@ -31,6 +31,9 @@
 
 <!-- Contenido principal -->
 <main class="bg-[#eeeff1] flex-1 p-4 overflow-y-auto">
+    <?php
+    global $incidenciaRegistrada;
+    ?>
     <!-- Header -->
     <h1 class="text-xl font-bold mb-4"">Registro de Incidencia</h1>
     <!-- Formulario -->
@@ -69,8 +72,9 @@
         $hora_actual = date('H:i');
         ?>
         <script>
-            document.getElementById('fecha').value = '<?php echo $fecha_actual; ?>';
-            document.getElementById('hora').value = '<?php echo $hora_actual; ?>';
+            document.getElementById('numero_incidencia').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['INC_codigo']: ''; ?>';
+            document.getElementById('hora').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['INC_hora']: $hora_actual; ?>';
+            document.getElementById('fecha').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['INC_fecha']: $fecha_actual; ?>';
         </script>
 
         <!-- TERCERA fila: Área, Código Patrimonial -->
@@ -107,12 +111,27 @@
                        class="w-full border-gray-300 rounded-md p-2 text-sm">
             </div>
         </div>
+        <script>
+
+            document.getElementById('codigo_patrimonial').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['INC_codigoPatrimonial']: ''; ?>';
+            document.getElementById('asunto').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['INC_asunto']: ''; ?>';
+
+            document.getElementById('numero_documento').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['INC_numDocumento']: ''; ?>';
+            document.getElementById('area').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['ARE_codigo']: ''; ?>';
+
+
+
+        </script>
 
         <!-- SEXTA fila: Descripción -->
         <div class="w-full mb-2">
             <label for="descripcion" class="block mb-1 font-bold text-sm">Descripción:</label>
             <textarea id="descripcion" name="descripcion" rows="4" class="border p-2 w-full text-sm max-h-40 resize-none overflow-y-auto"></textarea>
         </div>
+
+        <script>
+            document.getElementById('descripcion').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['INC_observacion']: ''; ?>';
+        </script>
 
         <!-- Botónes -->
         <div class="flex justify-center space-x-4">
@@ -151,6 +170,7 @@
                 $.each(data, function (index, value) {
                     select.append('<option value="' + value.CAT_codigo + '">' + value.CAT_nombre + '</option>');
                 });
+                document.getElementById('categoria').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['CAT_codigo']: ''; ?>';
             },
             error: function (error) {
                 console.error(error);
@@ -170,6 +190,7 @@
                 $.each(data, function (index, value) {
                     select.append('<option value="' + value.ARE_codigo + '">' + value.ARE_nombre + '</option>');
                 });
+                document.getElementById('area').value = '<?php echo $incidenciaRegistrada? $incidenciaRegistrada['ARE_codigo']: ''; ?>';
             },
             error: function (error) {
                 console.error(error);
@@ -186,8 +207,10 @@
             success: function (data) {
                 console.log(data);
                 var select = $('#numero_incidencia');
-                select.empty();
-                select.val(data.INC_codigo);
+                if (select.val() === '') {
+                    select.empty();
+                    select.val(data.INC_codigo);
+                }
             },
             error: function (error) {
                 console.error(error);

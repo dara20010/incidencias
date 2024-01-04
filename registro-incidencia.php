@@ -2,10 +2,19 @@
 
 $action = $_GET['action'] ?? '';
 $state = $_GET['state'] ?? '';
+$INC_codigo = $_GET['INC_codigo'] ?? '';
 
 require_once 'app/controllers/incidenciaController.php';
 $incidenciaController = new IncidenciaController();
+$incidenciaModel = new IncidenciaModel();
 
+if ($INC_codigo != '') {
+    global $incidenciaRegistrada;
+    $incidenciaRegistrada = $incidenciaModel->obtenerIncidenciaPorId($INC_codigo);
+
+} else {
+    $incidenciaRegistrada = null;
+}
 
 switch ($action) {
     case 'registrar':

@@ -29,6 +29,7 @@ class UsuarioModel
 
         $logData = "SP Result: " . $resultado;
         file_put_contents('logs/log.txt', $logData . PHP_EOL, FILE_APPEND);
+
         if ($resultado) {
             // Inicio de sesión exitoso, almacenamos la informacion del usuario
             session_start();

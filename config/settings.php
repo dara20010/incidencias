@@ -7,5 +7,5 @@ define("PASSWORD", NULL);
 // Nombre de la BD
 define("DATABASE", "INCIDENCIAS");
 // Dirección del servidor de la base de datos
-define("SERVIDOR", "DARA");
+define("SERVIDOR", "LSICCHA");
 
